@@ -92,13 +92,14 @@ public class GivenTestSetDataSplitter extends AbstractDataSplitter {
         testMatrix = testConvertor.getPreferenceMatrix(conf);
         trainMatrix = dataConvertor.getPreferenceMatrix(conf);
 
-        // remove test elements from trainMatrix
-        for (MatrixEntry me : testMatrix) {
-            int rowIdx = me.row();
-            int colIdx = me.column();
-            trainMatrix.set(rowIdx, colIdx, 0.0);
-        }
-        trainMatrix.reshape();
+        // xiaojie
+//        // remove test elements from trainMatrix
+//        for (MatrixEntry me : testMatrix) {
+//            int rowIdx = me.row();
+//            int colIdx = me.column();
+//            trainMatrix.set(rowIdx, colIdx, 0.0);
+//        }
+//        trainMatrix.reshape();
 
 //        if (Objects.equals(conf.get("data.convert.columns"), null)){
 //            testMatrix = testConvertor.getPreferenceMatrix();

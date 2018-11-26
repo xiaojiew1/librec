@@ -28,14 +28,20 @@ import org.apache.commons.cli.Options;
 import java.io.FileInputStream;
 import java.util.Properties;
 
+// xiaojie
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
 /**
  * RecDriver
  *
  * @author WangYuFeng
  */
 public class RecDriver implements LibrecTool {
+    // xiaojie
+    final static Log LOG = LogFactory.getLog(RecDriver.class);
 
-    /**
+	/**
      * Execute the command with the given arguments.
      *
      * @param args command specific arguments.
@@ -87,7 +93,10 @@ public class RecDriver implements LibrecTool {
     }
 
     public static void main(String[] args) throws Exception {
-        LibrecTool tool = new RecDriver();
+        // xiaojie
+        LOG.info("We have overridden the default core classpath in librec.");
+
+    	LibrecTool tool = new RecDriver();
 
         Options options = new Options();
         options.addOption("build", false, "build model");
