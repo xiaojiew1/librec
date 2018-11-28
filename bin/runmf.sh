@@ -1,5 +1,5 @@
 dataset_name=$1
-dataset_name_list=(amazon coat ml-1m song)
+dataset_name_list=(amazon coat movie song amason mcoat)
 if ! [[ ${dataset_name_list[*]} =~ $dataset_name ]]
 then
   echo 'unknown dataset' ${dataset_name}
