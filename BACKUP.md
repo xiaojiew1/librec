@@ -14,6 +14,10 @@ python -W ignore evalall.py \
   ../runs/song/ \
   ../data/song/test/ratings_0.txt
 
+
+
+
+
 ### bin/librec
 # xiaojie
 export CLASSPATH=${LIBREC_HOME}/core/target/classes:${LIBREC_HOME}/core/target/test-classes:${CLASSPATH}

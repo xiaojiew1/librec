@@ -1,5 +1,6 @@
 # drrec
 runs/
+data/
 
 # librec
 *classes/*
