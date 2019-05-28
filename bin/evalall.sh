@@ -1,17 +1,16 @@
 if [ "$#" -ne 1 ]
 then
-  echo "usage: $0 amazon|coat|ml-1m|song" >&2
+  echo "usage: $0 dataset_name" >&2
   exit 1
 fi
 
 dataset_name=$1
-dataset_name_list=(amazon coat ml-1m song)
-if ! [[ ${dataset_name_list[*]} =~ $dataset_name ]]
-then
-  echo 'unknown dataset' ${dataset_name}
-  exit 1
+dataset_dir=../data/${dataset_name}
+if [ ! -d ${dataset_dir} ]; then
+  echo 'Cannot find the dataset'
+  exit
 fi
 
 python -W ignore evalall.py \
-  ../runs/${dataset_name}/ \
-  ../data/${dataset_name}/test/ratings_0.txt
+  ../runs/${dataset_name} \
+  ${dataset_dir}/test/ratings.txt
