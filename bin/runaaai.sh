@@ -1,3 +1,9 @@
+dataset_name=coat_excl_0.05
+./runall.sh ${dataset_name}
+dataset_name=coat_incl_0.05
+./runall.sh ${dataset_name}
+exit
+
 dataset_name=book_excl_0.05
 ./runall.sh ${dataset_name}
 dataset_name=book_incl_0.05
@@ -18,10 +24,3 @@ for ubs_ratio in 0.01 0.05 0.1 0.5; do
 done
 exit
 
-for ubs_ratio in 0.01 0.05 0.1 0.5; do
-  dataset_name=coat_excl_${ubs_ratio}
-  ./runall.sh ${dataset_name}
-  dataset_name=coat_incl_${ubs_ratio}
-  ./runall.sh ${dataset_name}
-done
-exit
