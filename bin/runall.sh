@@ -12,25 +12,16 @@ testset_path=${dataset_name}/test
 model_splitter=testset
 eval_classes=mae,mse
 
-recommender_class_list='biasedmf pmf'
 iterator_maximum=200
-
-iterator_learnrate_list='0.005 0.01'
-learnrate_decay_list='0.9 1.0'
-
-user_regularization_list='0.005 0.01 0.05'
-item_regularization_list='0.005 0.01 0.05'
-bias_regularization_list='0.005 0.01 0.05'
-
+recommender_class_list='biasedmf pmf'
+iterator_learnrate_list='0.001 0.005 0.01 0.05'
+regularization_list='0.001 0.005 0.01 0.05 0.1'
 factor_number_list='20 40 80 160 320'
 
 for recommender_class in ${recommender_class_list}; do
   for iterator_learnrate in ${iterator_learnrate_list}; do
-    for learnrate_decay in ${learnrate_decay_list}; do
-      for user_regularization in ${user_regularization_list}; do
-        for item_regularization in ${item_regularization_list}; do
-          for bias_regularization in ${bias_regularization_list}; do
-            for factor_number in ${factor_number_list}; do
+    for regularization in ${regularization_list}; do
+      for factor_number in ${factor_number_list}; do
 
 param=${user_regularization}_${item_regularization}_${bias_regularization}
 param=${iterator_learnrate}_${learnrate_decay}_${param}
@@ -58,9 +49,6 @@ echo 'Cannot find' ${output_path}
   -D rec.factor.number=${factor_number}
 # exit
 
-            done
-          done
-        done
       done
     done
   done
