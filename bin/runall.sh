@@ -14,18 +14,16 @@ eval_classes=mae,mse
 
 iterator_maximum=200
 recommender_class_list='biasedmf pmf'
-iterator_learnrate_list='0.001 0.005 0.01 0.05'
-regularization_list='0.001 0.005 0.01 0.05 0.1'
-factor_number_list='20 40 80 160 320'
+iterator_learnrate_list='0.001 0.005 0.01 0.05' # '0.001'
+regularization_list='0.001 0.005 0.01 0.05 0.1' # '0.001'
+factor_number_list='20 40 80 160 320' # '20'
 
 for recommender_class in ${recommender_class_list}; do
-  for iterator_learnrate in ${iterator_learnrate_list}; do
+  for factor_number in ${factor_number_list}; do
     for regularization in ${regularization_list}; do
-      for factor_number in ${factor_number_list}; do
+      for iterator_learnrate in ${iterator_learnrate_list}; do
 
-param=${user_regularization}_${item_regularization}_${bias_regularization}
-param=${iterator_learnrate}_${learnrate_decay}_${param}
-param=${param}_${factor_number}
+param=${factor_number}_${iterator_learnrate}_${regularization}
 output_path=../runs/${dataset_name}/${recommender_class}_${param}
 # echo ${output_path}
 if [ -f ${output_path} ]
@@ -42,10 +40,10 @@ echo 'Cannot find' ${output_path}
   -D rec.eval.classes=${eval_classes} \
   -D rec.recommender.class=${recommender_class} \
   -D rec.iterator.maximum=${iterator_maximum} \
-  -D rec.learnrate.decay=${learnrate_decay} \
-  -D rec.user.regularization=${user_regularization} \
-  -D rec.item.regularization=${item_regularization} \
-  -D rec.bias.regularization=${bias_regularization} \
+  -D rec.iterator.learnrate=${iterator_learnrate} \
+  -D rec.user.regularization=${regularization} \
+  -D rec.item.regularization=${regularization} \
+  -D rec.bias.regularization=${regularization} \
   -D rec.factor.number=${factor_number}
 # exit
 
