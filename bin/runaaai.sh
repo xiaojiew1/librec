@@ -1,6 +1,6 @@
-dataset_name=music_excl_${ubs_ratio}
+dataset_name=music_excl_0.05
 ./runall.sh ${dataset_name}
-dataset_name=music_incl_${ubs_ratio}
+dataset_name=music_incl_0.05
 ./runall.sh ${dataset_name}
 exit
 
