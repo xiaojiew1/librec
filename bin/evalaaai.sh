@@ -3,6 +3,12 @@ if [ ! -d ${evalres_dir} ]; then
   mkdir ${evalres_dir}
 fi
 
+dataset_name=book_excl_0.05
+./evalall.sh ${dataset_name} > ${evalres_dir}/${dataset_name}.csv
+dataset_name=book_incl_0.05
+./evalall.sh ${dataset_name} > ${evalres_dir}/${dataset_name}.csv
+exit
+
 dataset_name=movie_excl_0.05
 ./evalall.sh ${dataset_name} > ${evalres_dir}/${dataset_name}.csv
 dataset_name=movie_incl_0.05
